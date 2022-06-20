@@ -6,6 +6,13 @@
 #
 
 BS_PRODUCT_NAME := juno
-BS_FIRMWARE_LIST := scp_romfw \
-                    scp_romfw_bypass \
-                    scp_ramfw
+
+ifeq ($(TEST_ON_TARGET),1)
+    BS_FIRMWARE_LIST := scp_romfw \
+                        scp_romfw_bypass \
+                        scp_ut
+else
+    BS_FIRMWARE_LIST := scp_romfw \
+                        scp_romfw_bypass \
+                        scp_ramfw
+endif
